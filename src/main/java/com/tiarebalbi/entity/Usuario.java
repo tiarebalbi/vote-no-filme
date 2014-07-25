@@ -22,6 +22,8 @@ public class Usuario extends BaseEntity {
 	@ElementCollection
 	private List<String> sessoes = new ArrayList<>();
 	
+	private Boolean status;
+	
 	protected Usuario () {}
 	
 
@@ -67,6 +69,23 @@ public class Usuario extends BaseEntity {
 	 */
 	public String getEmail() {
 		return email;
+	}
+
+
+	/**
+	 * metodo getter do attr. status
+	 * @return the status
+	 */
+	public Boolean getStatus() {
+		return status;
+	}
+
+
+	/**
+	 * @param status the status to set
+	 */
+	public void setStatus(Boolean status) {
+		this.status = status;
 	}
 	
 }
