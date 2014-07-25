@@ -36,7 +36,7 @@ public class DataContext {
 	private Environment env;
 	
 	/**
-	 * Bootstraps an in-memory Derby database.
+	 * Configuração do DataSource com o banco Apache Derby
 	 * 
 	 * @return {@link DataSource}
 	 * http://docs.spring.io/spring/docs/4.0.x/spring-framework-reference/htmlsingle/#jdbc-embedded-database-using-Derby 
