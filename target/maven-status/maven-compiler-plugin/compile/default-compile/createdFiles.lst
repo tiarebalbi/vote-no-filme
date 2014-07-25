@@ -1,6 +1,0 @@
-com/tiarebalbi/config/DataContext.class
-com/tiarebalbi/config/ServletInitializer.class
-com/tiarebalbi/entity/Filme.class
-com/tiarebalbi/repository/FilmeRepository.class
-com/tiarebalbi/entity/BaseEntity.class
-com/tiarebalbi/config/ApplicationContext.class
