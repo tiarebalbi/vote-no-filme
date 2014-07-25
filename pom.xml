@@ -11,6 +11,19 @@
 	<name>vote-no-filme</name>
 	<description>Vote no Filme!!!</description>
 
+	<repositories>
+		<repository>
+			<id>spring-ext</id>
+			<url>http://repo.spring.io/ext-release-local/</url>
+			<releases>
+				<enabled>true</enabled>
+			</releases>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+		</repository>
+	</repositories>
+
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
