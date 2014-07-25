@@ -1,6 +1,8 @@
 vote-no-filme
 =======================
 
+https://travis-ci.org/tiarebalbi/vote-no-filme.svg?branch=master
+
 Projeto demonstração do vote-no-filme.
 
 Executando os testes:
