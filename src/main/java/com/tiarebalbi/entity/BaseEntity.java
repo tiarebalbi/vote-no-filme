@@ -2,6 +2,7 @@ package com.tiarebalbi.entity;
 
 import java.time.ZonedDateTime;
 
+import javax.persistence.EntityListeners;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -10,6 +11,7 @@ import javax.persistence.Version;
 
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 /**
  * Base Entity
@@ -17,6 +19,7 @@ import org.springframework.data.annotation.LastModifiedDate;
  * @author Tiarê Balbi Bonamini
  */
 @MappedSuperclass
+@EntityListeners(AuditingEntityListener.class)
 public abstract class BaseEntity {
 	
 	@Id

@@ -2,6 +2,9 @@ package com.tiarebalbi.repository;
 
 import static org.junit.Assert.*;
 
+import java.util.List;
+
+import org.junit.After;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,8 +36,54 @@ public class ITFilmeRepositoryTest {
 		Filme retorno = this.repository.save(filme);
 		assertNotNull("O Filme deve ser persistido na base de dados", retorno);
 		assertNotNull("A ID do registro não deve ser null", retorno.getId());
-		assertEquals(filme.getNome(), retorno.getNome());
+		assertEquals("O nome do filme deve ser igual ao valor retornado pelo repository",filme.getNome(), retorno.getNome());
 		
+	}
+	
+	/**
+	 * Busca registros salvo no banco
+	 */
+	@Test
+	public void deveTestarRealizadaConsultaDeRegistros() {
+		Filme filme = new Filme("Need for Speed 1");
+		Filme filme2 = new Filme("Need for Speed 2");
+		Filme filme3 = new Filme("Need for Speed 3");
+		Filme filme4 = new Filme("Need for Speed 4");
+		
+		Filme retorno = this.repository.save(filme);
+		this.repository.save(filme2);
+		this.repository.save(filme3);
+		this.repository.save(filme4);
+		
+		List<Filme> registros = this.repository.findAll();
+		assertNotNull("O Filme deve ser persistido na base de dados", registros);
+		assertEquals("O nome do primeiro filme deve ser Need for Speed 1", filme.getNome(), retorno.getNome());
+		assertTrue("O total de registro deve ser igual a 4", registros.size() == 4);
+	}
+	
+	/**
+	 * 
+	 */
+	@Test
+	public void deveBuscarUmRegistro() {
+		Filme filme = new Filme("Need for Speed 4");
+		Filme retorno = this.repository.save(filme);
+		
+		Filme retornoConsulta = this.repository.findOne(retorno.getId());
+		assertNotNull("O retorno da consulta não deve ser null", retornoConsulta);
+		assertEquals("O nome do filme deve ser igual ao valor persistido", filme.getNome(), retornoConsulta.getNome());
+		
+	}
+	
+	/**
+	 * Limpa registro após sua execução
+	 */
+	@After
+	public void deveLimparTodosRegistros() {
+		List<Filme> dados = this.repository.findAll();
+		for (Filme filme : dados) {
+			this.repository.delete(filme);
+		}
 	}
 
 }
