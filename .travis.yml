@@ -1,0 +1,12 @@
+language: java
+
+before_install: 
+  - sudo apt-get update -qq 
+  - sudo apt-get install oracle-java8-installer 
+
+install: 
+  - mvn install -DskipTests=true
+
+script: 
+  - mvn clean test -P dev
+  - mvn clean verify -P integration-test
