@@ -1,6 +1,8 @@
 package com.tiarebalbi.repository;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
 
 import java.util.List;
 
@@ -14,6 +16,7 @@ import org.springframework.test.context.web.WebAppConfiguration;
 
 import com.tiarebalbi.config.ApplicationContext;
 import com.tiarebalbi.entity.Filme;
+import com.tiarebalbi.entity.QFilme;
 
 /**
  * @author Tiarê Balbi Bonamini
@@ -72,6 +75,29 @@ public class ITFilmeRepositoryTest {
 		Filme retornoConsulta = this.repository.findOne(retorno.getId());
 		assertNotNull("O retorno da consulta não deve ser null", retornoConsulta);
 		assertEquals("O nome do filme deve ser igual ao valor persistido", filme.getNome(), retornoConsulta.getNome());
+	}
+	
+	@Test
+	public void deveBuscarUmRegistroPorCondicao() {
+		Filme filme = new Filme("Need for Speed 4");
+		this.repository.save(filme);
+		
+		Filme retorno = this.repository.findOne(QFilme.filme.nome.eq("Need for Speed 4"));
+		
+		assertNotNull("O retorno da consulta não deve ser null", retorno);
+		
+	}
+	
+	@Test
+	public void deveExcluirUmRegistroPorId() {
+		Filme filme = new Filme("Need for Speed 4");
+		Filme retorno = this.repository.save(filme);
+		
+		assertTrue("O total de registro deve ser igual a 1", this.repository.count() == 1);
+		
+		this.repository.delete(retorno.getId());
+		
+		assertTrue("O total de registro deve ser igual a 0", this.repository.count() == 0);
 		
 	}
 	
