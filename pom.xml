@@ -246,6 +246,18 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
+
+			<plugin>
+				<groupId>org.eluder.coveralls</groupId>
+				<artifactId>coveralls-maven-plugin</artifactId>
+				<version>2.2.0</version>
+				<configuration>
+					<excludes>
+						<exclude>**/Q*.java</exclude>
+					</excludes>
+					<repoToken>PrSAWNQhXEWMqZSeBSfYxD7j5cHbBr5tD</repoToken>
+				</configuration>
+			</plugin>
 		</plugins>
 	</build>
 

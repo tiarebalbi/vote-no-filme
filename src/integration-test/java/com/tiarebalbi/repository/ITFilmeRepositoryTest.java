@@ -77,6 +77,9 @@ public class ITFilmeRepositoryTest {
 		assertEquals("O nome do filme deve ser igual ao valor persistido", filme.getNome(), retornoConsulta.getNome());
 	}
 	
+	/**
+	 * 
+	 */
 	@Test
 	public void deveBuscarUmRegistroPorCondicao() {
 		Filme filme = new Filme("Need for Speed 4");
@@ -88,6 +91,9 @@ public class ITFilmeRepositoryTest {
 		
 	}
 	
+	/**
+	 * 
+	 */
 	@Test
 	public void deveExcluirUmRegistroPorId() {
 		Filme filme = new Filme("Need for Speed 4");

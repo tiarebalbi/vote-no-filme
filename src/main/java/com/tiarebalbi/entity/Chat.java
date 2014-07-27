@@ -3,6 +3,9 @@ package com.tiarebalbi.entity;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 
+/**
+ * @author Tiarê Balbi Bonamini
+ */
 @Entity
 public class Chat extends BaseEntity {
 

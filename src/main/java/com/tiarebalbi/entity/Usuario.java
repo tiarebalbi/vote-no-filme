@@ -6,6 +6,7 @@ import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 
 /**
  * @author Tiarê Balbi Bonamini
@@ -19,7 +20,7 @@ public class Usuario extends BaseEntity {
 	@Column(unique=true)
 	private String email;
 	
-	@ElementCollection
+	@ElementCollection(fetch=FetchType.EAGER)
 	private List<String> sessoes = new ArrayList<>();
 	
 	private Boolean status;
