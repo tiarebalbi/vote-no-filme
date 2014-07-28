@@ -13,6 +13,9 @@ import com.tiarebalbi.entity.Filme;
 import com.tiarebalbi.entity.QFilme;
 import com.tiarebalbi.repository.FilmeRepository;
 
+/**
+ * @author Tiarê Balbi Bonamini
+ */
 @Service
 @Transactional
 public class CustomFilmeService implements FilmeService {
@@ -20,6 +23,11 @@ public class CustomFilmeService implements FilmeService {
 	
 	private final FilmeRepository repository;
 	
+	/**
+	 * Construtor padrão com a inicialização do repository {@link FilmeRepository}
+	 * 
+	 * @param repository
+	 */
 	@Autowired
 	public CustomFilmeService(FilmeRepository repository) {
 		this.repository = repository;

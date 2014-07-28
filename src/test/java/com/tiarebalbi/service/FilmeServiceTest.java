@@ -15,6 +15,10 @@ import com.tiarebalbi.entity.Filme;
 import com.tiarebalbi.entity.QFilme;
 import com.tiarebalbi.repository.FilmeRepository;
 
+/**
+ * @author Tiarê Balbi Bonamini
+ *
+ */
 @RunWith(value=MockitoJUnitRunner.class)
 public class FilmeServiceTest {
 	
@@ -23,18 +27,27 @@ public class FilmeServiceTest {
 	
 	private CustomFilmeService service;
 	
+	/**
+	 * 
+	 */
 	@Before
 	public void init() {
 		this.service = new CustomFilmeService(repository);
 	}
 
 	
+	/**
+	 * 
+	 */
 	@Test(expected=IllegalArgumentException.class)
 	public void deveSalvarUmUsuarioInvalidoEGerarErro() {
 		this.service.salvar(null);
 		fail("Deveria ter gerado uma IllegalArgumentException devido ao objeto ser nullo");
 	}
 	
+	/**
+	 * 
+	 */
 	@Test(expected=IllegalArgumentException.class)
 	public void deveSalvarUmFilmeExistenteEGerarErro() {
 		when(this.repository.count(any(Predicate.class))).thenReturn(new Long(2));
@@ -42,18 +55,27 @@ public class FilmeServiceTest {
 		fail("Deveria ter gerado uma IllegalArgumentException pois este filme já se encontra cadastrado");
 	}
 	
+	/**
+	 * 
+	 */
 	@Test(expected=IllegalArgumentException.class)
 	public void deveBuscarTodosComCondicaoNullaEGerarErro() {
 		this.service.buscarTodos(null);
 		fail("Deveria ter gerado uma IllegalArgumentException devido ao objeto ser nullo");
 	}
 	
+	/**
+	 * 
+	 */
 	@Test(expected=IllegalArgumentException.class)
 	public void deveExcluirRegistroPorIdInvalida() {
 		this.service.buscarRegistro(new Long(0));
 		fail("Deveria ter gerado uma IllegalArgumentException a ID informada ser invalida");
 	}
 	
+	/**
+	 * 
+	 */
 	@Test(expected=IllegalArgumentException.class)
 	public void deveExcluirRegistroNaoCadastradoEGerarErro() {
 		when(this.repository.findOne(any(Predicate.class))).thenReturn(null);

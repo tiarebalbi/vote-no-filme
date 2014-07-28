@@ -2,6 +2,7 @@ vote-no-filme
 =======================
 
 [![Build Status](https://travis-ci.org/tiarebalbi/vote-no-filme.svg?branch=master)](https://travis-ci.org/tiarebalbi/vote-no-filme)
+[![Coverage Status](https://img.shields.io/coveralls/tiarebalbi/vote-no-filme.svg)](https://coveralls.io/r/tiarebalbi/vote-no-filme)
 
 Projeto demonstração do vote-no-filme.
 
