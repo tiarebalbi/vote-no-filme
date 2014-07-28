@@ -23,8 +23,15 @@ import com.tiarebalbi.repository.UsuarioRepository;
 @Transactional
 public class CustomUsuarioService implements UsuarioService {
 	
+	private final UsuarioRepository repository;
+	
+	/**
+	 * @param repository {@link UsuarioRepository}
+	 */
 	@Autowired
-	private UsuarioRepository repository;
+	public CustomUsuarioService(UsuarioRepository repository) {
+		this.repository = repository;
+	}
 
 	/* (non-Javadoc)
 	 * @see com.tiarebalbi.service.UsuarioService#salvar(com.tiarebalbi.entity.Usuario)

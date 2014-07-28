@@ -20,8 +20,15 @@ import com.tiarebalbi.repository.ChatRepository;
 @Transactional
 public class CustomChatService implements ChatService {
 	
+	private final ChatRepository repository;
+	
+	/**
+	 * @param repository {@link ChatRepository}
+	 */
 	@Autowired
-	private ChatRepository repository;
+	public CustomChatService(ChatRepository repository) {
+		this.repository = repository;
+	}
 
 	@Override
 	public Chat salvar(Chat mensagem) {

@@ -18,8 +18,15 @@ import com.tiarebalbi.query.VotoQuery;
 @Transactional
 public class CustomRankingService implements RankingService {
 	
+	private final VotoQuery query;
+	
+	/**
+	 * @param query {@link VotoQuery}
+	 */
 	@Autowired
-	private VotoQuery query;
+	public CustomRankingService(VotoQuery query) {
+		this.query = query;
+	}
 	
 
 	@Override

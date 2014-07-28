@@ -8,6 +8,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.util.Assert;
 
 import com.mysema.query.types.OrderSpecifier;
 import com.mysema.query.types.Predicate;
@@ -22,15 +23,26 @@ import com.tiarebalbi.repository.VotoRepository;
 @Transactional
 public class CustomVotoService implements VotoService {
 
+	private final VotoRepository repository;
+	
+	/**
+	 * @param repository {@link VotoRepository}
+	 */
 	@Autowired
-	private VotoRepository repository;
+	public CustomVotoService(VotoRepository repository) {
+		this.repository = repository;
+	}
 
 	/* (non-Javadoc)
 	 * @see com.tiarebalbi.service.VotoService#salvar(com.tiarebalbi.entity.Voto)
 	 */
 	@Override
 	public Voto salvar(Voto voto) {
-		// TODO Auto-generated method stub
+		Assert.notNull(voto, "Não foi possível identificar os dados do seu voto.");
+		
+		Assert.notNull(voto.getFilme(), "Não foi possível identificar o filme votado. Por favor tente votar novamente.");
+		Assert.notNull(voto.getSession(), "Não foi possível identificar a sua sessão, por favor recarregue a página.");
+		
 		return this.repository.save(voto);
 	}
 
@@ -38,9 +50,8 @@ public class CustomVotoService implements VotoService {
 	 * @see com.tiarebalbi.service.VotoService#buscarTodos(com.mysema.query.types.Predicate, com.mysema.query.types.OrderSpecifier[])
 	 */
 	@Override
-	public List<Voto> buscarTodos(Predicate condicao,
-			OrderSpecifier<?>... ordem) {
-		// TODO Auto-generated method stub
+	public List<Voto> buscarTodos(Predicate condicao, OrderSpecifier<?>... ordem) {
+		Assert.notNull(condicao, "Não foi possível identificar a condição de busca.");
 		return (List<Voto>) this.repository.findAll(condicao, ordem);
 	}
 
@@ -49,7 +60,7 @@ public class CustomVotoService implements VotoService {
 	 */
 	@Override
 	public Voto buscarRegistro(Predicate condicao) {
-		// TODO Auto-generated method stub
+		Assert.notNull(condicao, "Não foi possível identificar a condição de busca.");
 		return this.repository.findOne(condicao);
 	}
 
@@ -58,7 +69,7 @@ public class CustomVotoService implements VotoService {
 	 */
 	@Override
 	public Voto buscarRegistro(Long id) {
-		// TODO Auto-generated method stub
+		Assert.notNull(id, "Não foi possível identificar a chave do registro solicitado.");
 		return this.repository.findOne(id);
 	}
 
