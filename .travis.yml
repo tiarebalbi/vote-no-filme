@@ -9,3 +9,7 @@ install:
 script: 
   - mvn clean test -P dev
   - mvn clean verify -P integration-test
+
+after_success:
+  - mvn test -P dev jacoco:report coveralls:jacoco
+  - mvn verify -P integration-test jacoco:report coveralls:jacoco
