@@ -9,7 +9,3 @@ install:
 script: 
   - mvn clean test -P dev
   - mvn clean verify -P integration-test
-  
-cache:
-  directories:
-  	- ~/.m2
