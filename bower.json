@@ -1,0 +1,33 @@
+{
+  "name": "vote-no-filme",
+  "version": "1.0.0.RELEASE",
+  "homepage": "https://github.com/tiarebalbi/vote-no-filme",
+  "authors": [
+    "Tiarê Balbi Bonamini <tiarebalbi@me.com>"
+  ],
+  "description": "Projeto Exemplo (Votação)",
+  "main": "src/main/webapp/resources/css/main.css",
+  "moduleType": [
+    "node"
+  ],
+  "keywords": [
+    "votacao",
+    "filme",
+    "spring",
+    "java"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "~3.2.0",
+    "font-awesome": "~4.1.0",
+    "angular": "~1.2.22",
+    "angular-route": "~1.2.22"
+  }
+}
