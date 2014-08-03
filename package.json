@@ -1,0 +1,22 @@
+{
+  "name": "vote-no-filme",
+  "version": "1.0.0",
+  "description": "Projeto exemplo (Votação)",
+  "main": "index.js",
+  "scripts": {
+    "test": "exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tiarebalbi/vote-no-filme.git"
+  },
+  "author": "Tiarê Balbi Bonamini",
+  "license": "Apache License",
+  "bugs": {
+    "url": "https://github.com/tiarebalbi/vote-no-filme/issues"
+  },
+  "homepage": "https://github.com/tiarebalbi/vote-no-filme",
+  "devDependencies": {
+    "gulp-bower-src": "^0.1.0"
+  }
+}

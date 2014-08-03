@@ -8,11 +8,6 @@
 
 	<web>
 		<link target="/">
-			<dir name="${rebel.workspace.path}/vote-no-filme/target/m2e-wtp/web-resources">
-				<exclude name="/"/>
-			</dir>
-		</link>
-		<link target="/">
 			<dir name="${rebel.workspace.path}/vote-no-filme/src/main/webapp">
 			</dir>
 		</link>
