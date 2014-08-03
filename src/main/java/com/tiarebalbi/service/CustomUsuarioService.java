@@ -65,4 +65,16 @@ public class CustomUsuarioService implements UsuarioService {
 		return (List<Usuario>) this.repository.findAll(condicao, ordem);
 	}
 
+	@Override
+	public Usuario buscarRegistro(Long id) {
+		Assert.notNull(id, "Não foi possível identificar a chave do registro");
+		return this.repository.findOne(id);
+	}
+
+	@Override
+	public Usuario buscarRegistro(Predicate condicao) {
+		Assert.notNull(condicao, "Não foi possível identificar a condição da busca");
+		return this.repository.findOne(condicao);
+	}
+
 }

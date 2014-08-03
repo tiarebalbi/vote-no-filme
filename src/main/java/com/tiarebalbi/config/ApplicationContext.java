@@ -12,7 +12,7 @@ import org.springframework.context.annotation.Import;
  */
 @Configuration
 @EnableAutoConfiguration
-@Import(value=DataContext.class)
+@Import(value={DataContext.class, WebContext.class})
 public class ApplicationContext {
 
     /**

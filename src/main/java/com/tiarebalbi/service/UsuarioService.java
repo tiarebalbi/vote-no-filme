@@ -27,5 +27,17 @@ public interface UsuarioService {
 	 * @return {@link List}
 	 */
 	List<Usuario> buscarTodos(Predicate condicao, OrderSpecifier<?>... ordem);
+	
+	/**
+	 * @param id
+	 * @return {@link Usuario}
+	 */
+	Usuario buscarRegistro(Long id);
+
+	/**
+	 * @param contains
+	 * @return {@link Usuario}
+	 */
+	Usuario buscarRegistro(Predicate contains);
 
 }

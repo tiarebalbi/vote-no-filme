@@ -25,7 +25,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
  * @author Tiarê Balbi Bonamini
  */
 @Configuration
-@ComponentScan(basePackages="com.tiarebalbi.query")
+@ComponentScan(basePackages={"com.tiarebalbi.query", "com.tiarebalbi.service"})
 @EnableJpaRepositories("com.tiarebalbi.repository")
 @EnableJpaAuditing
 @EnableTransactionManagement
