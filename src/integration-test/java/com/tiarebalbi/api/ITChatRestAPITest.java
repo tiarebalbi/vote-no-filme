@@ -6,6 +6,9 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
+import java.util.List;
+
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -21,6 +24,8 @@ import org.springframework.web.context.WebApplicationContext;
 import com.tiarebalbi.config.ApplicationContext;
 import com.tiarebalbi.entity.Chat;
 import com.tiarebalbi.entity.Usuario;
+import com.tiarebalbi.repository.ChatRepository;
+import com.tiarebalbi.repository.UsuarioRepository;
 import com.tiarebalbi.service.ChatService;
 import com.tiarebalbi.service.UsuarioService;
 
@@ -42,6 +47,12 @@ public class ITChatRestAPITest {
 	
 	@Autowired
 	private ChatService chatService;
+	
+	@Autowired
+	private ChatRepository repository;
+	
+	@Autowired
+	private UsuarioRepository usuarioRepository;
 
 	/**
 	 * 
@@ -73,6 +84,21 @@ public class ITChatRestAPITest {
 			.andExpect(jsonPath("$.data", hasSize(1)))
 			.andExpect(jsonPath("$.data[0].mensagem", is("DAwdqwd")))
 			.andExpect(jsonPath("$.data[0].usuario.nome", is("Tiarê Balbi")));
+	}
+	
+	/**
+	 * 
+	 */
+	@After
+	public void limpeza() {
+		
+		List<Chat> dados = this.repository.findAll();
+		for(Chat chat : dados) {
+			this.repository.delete(chat);
+		}
+		
+		List<Usuario> usuarios = this.usuarioRepository.findAll();
+		this.usuarioRepository.delete(usuarios);
 	}
 
 }
