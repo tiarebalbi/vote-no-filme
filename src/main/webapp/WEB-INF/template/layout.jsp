@@ -14,6 +14,7 @@
 	
 </head>
 <body>
-<tiles:insertAttribute name="conteudo" />
+	<tiles:insertAttribute name="conteudo" />
+<%-- 	<script src="${path}resources/vendor/requirejs/require.js"></script> --%>
 </body>
 </html>

@@ -39,7 +39,6 @@ public class WebContext extends WebMvcConfigurerAdapter {
 	public MessageSource messageSource(){
 	    ReloadableResourceBundleMessageSource messageSource = new ReloadableResourceBundleMessageSource();
 	    messageSource.setBasenames("classpath:i18n/messages");
-	    messageSource.setFallbackToSystemLocale(false);
 	    return messageSource;
 	}
 	
