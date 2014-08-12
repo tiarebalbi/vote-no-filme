@@ -1,7 +1,11 @@
 package com.tiarebalbi.entity;
 
+import java.util.Calendar;
+
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
+
+import org.springframework.format.annotation.DateTimeFormat;
 
 /**
  * @author Tiarê Balbi Bonamini
@@ -13,6 +17,23 @@ public class Chat extends BaseEntity {
 	
 	@ManyToOne
 	private Usuario usuario;
+	
+	@DateTimeFormat(pattern="dd/MM/yyyy HH:mm")
+	private Calendar horario;
+
+	/**
+	 * @return the horario
+	 */
+	public Calendar getHorario() {
+		return horario;
+	}
+
+	/**
+	 * @param horario the horario to set
+	 */
+	public void setHorario(Calendar horario) {
+		this.horario = horario;
+	}
 
 	/**
 	 * metodo getter do attr. mensagem

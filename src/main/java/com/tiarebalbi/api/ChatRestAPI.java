@@ -42,7 +42,7 @@ public class ChatRestAPI {
 	@RequestMapping(value="/listar", method=RequestMethod.GET)
 	public ModelAndView listar() {
 		ModelAndView view = new ModelAndView();
-		Page<Chat> registros = this.service.buscarTodos(QChat.chat.usuario.isNotNull(), new PageRequest(0, TOTAL_HISTORICO_MENSAGEM, new Sort(Sort.Direction.DESC, "dataCriacao")));
+		Page<Chat> registros = this.service.buscarTodos(QChat.chat.usuario.isNotNull(), new PageRequest(0, TOTAL_HISTORICO_MENSAGEM, new Sort(Sort.Direction.DESC, "horario")));
 		view.addObject("data", registros.getContent());
 		return view;
 	}
