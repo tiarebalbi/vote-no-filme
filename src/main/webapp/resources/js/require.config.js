@@ -1,16 +1,21 @@
 require.config({
+	baseUrl : 'resources/js/',
+    paths: {
+        'angular': '../vendor/angular/angular',
+        'angular-route': '../vendor/angular-route/angular-route',
+        'domReady': '../vendor/requirejs-domready/domReady'
+    },
 
-	paths : {
-		'domReady' : '../../vendor/bootstrap/dist/js/bootstrap.min',
-		'bootstrap' : '../../vendor/bootstrap/dist/js/bootstrap.min',
-		'angular' : '../../vendor/angular/angular.min'
-	},
+    shim: {
+        'angular': {
+            exports: 'angular'
+        },
+        'angular-route': {
+            deps: ['angular']
+        }
+    },
 
-	shim : {
-		'angular' : {
-			exports : 'angular'
-		}
-	},
-
-	deps : [ './init-bootstrap' ]
+    deps: [
+        './init-bootstrap'
+    ]
 });
