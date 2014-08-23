@@ -2,6 +2,8 @@ package com.tiarebalbi.entity;
 
 import javax.persistence.Entity;
 
+import org.codehaus.jackson.annotate.JsonCreator;
+import org.codehaus.jackson.annotate.JsonIgnore;
 import org.springframework.util.Assert;
 
 
@@ -19,24 +21,18 @@ public class Filme extends BaseEntity {
 	
 	private String descricao;
 	
-	protected Filme() {}
-
-	/**
-	 * Criação de um novo {@link Filme}
-	 * 
-	 * @param nome não deve ser {@literal null} ou em branco
-	 */
-	public Filme(String nome) {
-		Assert.hasText(nome, "O nome do filme não pode ficar em branco!");
-		
-		this.nome = nome;
-	}
-	
 	/**
 	 * @return the nome
 	 */
 	public String getNome() {
 		return nome;
+	}
+	
+	/**
+	 * @param nome
+	 */
+	public void setNome(String nome) {
+		this.nome = nome;
 	}
 
 	/**

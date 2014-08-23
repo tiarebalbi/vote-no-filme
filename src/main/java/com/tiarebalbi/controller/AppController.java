@@ -11,10 +11,10 @@ import org.springframework.web.servlet.ModelAndView;
  * @author Tiarê Balbi Bonamini
  */
 @Controller
-public class VotacaoController {
+public class AppController {
 	
 	
-	private static final String VIEW_INDEX = "votacao/index";
+	private static final String VIEW_INDEX = "app/index";
 
 	/**
 	 * @return {@link ModelAndView}

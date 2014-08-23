@@ -42,10 +42,11 @@ public class DataContext {
 	 * http://docs.spring.io/spring/docs/4.0.x/spring-framework-reference/htmlsingle/#jdbc-embedded-database-using-Derby 
 	 */
 	@Bean
-	public DataSource dataSource() {
-		EmbeddedDatabaseBuilder builder = new EmbeddedDatabaseBuilder();
-		return builder.setType(EmbeddedDatabaseType.DERBY).build();
-	}
+    public DataSource dataSource() {
+        return new EmbeddedDatabaseBuilder()
+            .setType(EmbeddedDatabaseType.DERBY)
+            .build();
+    }
 	
 	/**
 	 * @return {@link LocalContainerEntityManagerFactoryBean}

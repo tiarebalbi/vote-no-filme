@@ -3,11 +3,13 @@ package com.tiarebalbi.api;
 import static org.hamcrest.Matchers.hasSize;
 import static org.hamcrest.Matchers.is;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 import java.util.List;
 
+import org.codehaus.jackson.map.ObjectMapper;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -79,11 +81,40 @@ public class ITChatRestAPITest {
 		mensagem = this.chatService.salvar(mensagem);
 		
 		
-		this.mockMvc.perform(get("/api/chat/listar").accept(MediaType.APPLICATION_JSON_VALUE))
+		this.mockMvc.perform(get("/api/chat").accept(MediaType.APPLICATION_JSON_VALUE).contentType(MediaType.APPLICATION_JSON))
 			.andExpect(status().isOk())
 			.andExpect(jsonPath("$.data", hasSize(1)))
 			.andExpect(jsonPath("$.data[0].mensagem", is("DAwdqwd")))
 			.andExpect(jsonPath("$.data[0].usuario.nome", is("Tiarê Balbi")));
+	}
+	
+	/**
+	 * @throws Exception 
+	 * 
+	 */
+	@Test
+	public void deveSalvarUmaMensagem() throws Exception {
+		
+		Usuario usuario = new Usuario("Tiarê Balbi", "tiarebalbi@me.com");
+		usuario = this.usuarioService.salvar(usuario);
+		
+		Chat mensagem = new Chat();
+		mensagem.setMensagem("Mensagem 1");
+		mensagem.setUsuario(usuario);
+		
+		ObjectMapper mapper = new ObjectMapper();
+		String json = mapper.writeValueAsString(mensagem);
+		
+		this.mockMvc.perform(post("/api/chat")
+							.accept(MediaType.APPLICATION_JSON_VALUE)
+							.content(json)
+							.contentType(MediaType.APPLICATION_JSON)
+					)
+					.andExpect(jsonPath("$.status", is("success")))
+					.andExpect(jsonPath("$.message", is("Mensagem enviada!")))
+					.andExpect(status().isOk());
+		
+		
 	}
 	
 	/**

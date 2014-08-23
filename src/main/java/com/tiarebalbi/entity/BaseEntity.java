@@ -1,17 +1,10 @@
 package com.tiarebalbi.entity;
 
-import java.time.ZonedDateTime;
-
-import javax.persistence.EntityListeners;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
 import javax.persistence.Version;
-
-import org.springframework.data.annotation.CreatedDate;
-import org.springframework.data.annotation.LastModifiedDate;
-import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 /**
  * Base Entity
@@ -19,7 +12,6 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
  * @author Tiarê Balbi Bonamini
  */
 @MappedSuperclass
-@EntityListeners(AuditingEntityListener.class)
 public abstract class BaseEntity {
 	
 	@Id
@@ -28,12 +20,6 @@ public abstract class BaseEntity {
 	
 	@Version
 	protected Integer version;
-	
-	@CreatedDate
-	protected ZonedDateTime dataCriacao;
-	
-	@LastModifiedDate
-	protected ZonedDateTime ultimaAlteracao;
 	
 	/* 
 	 * (non-Javadoc)
@@ -76,34 +62,6 @@ public abstract class BaseEntity {
 	 */
 	public void setVersion(Integer version) {
 		this.version = version;
-	}
-
-	/**
-	 * @return the dataCriacao
-	 */
-	public ZonedDateTime getDataCriacao() {
-		return dataCriacao;
-	}
-
-	/**
-	 * @param dataCriacao the dataCriacao to set
-	 */
-	public void setDataCriacao(ZonedDateTime dataCriacao) {
-		this.dataCriacao = dataCriacao;
-	}
-
-	/**
-	 * @return the ultimaAlteracao
-	 */
-	public ZonedDateTime getUltimaAlteracao() {
-		return ultimaAlteracao;
-	}
-
-	/**
-	 * @param ultimaAlteracao the ultimaAlteracao to set
-	 */
-	public void setUltimaAlteracao(ZonedDateTime ultimaAlteracao) {
-		this.ultimaAlteracao = ultimaAlteracao;
 	}
 
 	/**

@@ -14,6 +14,7 @@ import org.springframework.web.accept.ContentNegotiationManager;
 import org.springframework.web.servlet.ViewResolver;
 import org.springframework.web.servlet.config.annotation.ContentNegotiationConfigurer;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
+import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 import org.springframework.web.servlet.view.ContentNegotiatingViewResolver;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
@@ -32,6 +33,11 @@ public class WebContext extends WebMvcConfigurerAdapter {
 	private static final String VIEW_RESOLVER_PREFIX = "/WEB-INF/views/";
 	private static final String VIEW_RESOLVER_SUFFIX = ".jsp";
 
+	@Override
+	public void addResourceHandlers(ResourceHandlerRegistry registry) {
+		registry.addResourceHandler("/resources/**").addResourceLocations("/resources/");
+	}
+	
 	/**
 	 * @return {@link MessageSource}
 	 */
@@ -39,7 +45,6 @@ public class WebContext extends WebMvcConfigurerAdapter {
 	public MessageSource messageSource(){
 	    ReloadableResourceBundleMessageSource messageSource = new ReloadableResourceBundleMessageSource();
 	    messageSource.setBasenames("classpath:i18n/messages");
-	    messageSource.setFallbackToSystemLocale(false);
 	    return messageSource;
 	}
 	

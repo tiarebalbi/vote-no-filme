@@ -14,6 +14,8 @@
 	
 </head>
 <body>
-<tiles:insertAttribute name="conteudo" />
+	<tiles:insertAttribute name="conteudo" />
+	<div>Running version app: <span app-version></span></div>
+	<script data-main="${path}resources/js/require.config" src="${path}resources/vendor/requirejs/require.js"></script>
 </body>
 </html>

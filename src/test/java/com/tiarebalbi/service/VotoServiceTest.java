@@ -53,7 +53,10 @@ public class VotoServiceTest {
 	@Test
 	public void deveSalvarUmNovoVoto() {
 		Voto voto = new Voto();
-		voto.setFilme(new Filme("Filme 1"));
+		Filme filme = new Filme();
+		filme.setNome("Filme 1");
+		 
+		voto.setFilme(filme);
 		voto.setSession("S1");
 		
 		when(this.repository.save(voto)).thenReturn(voto);
@@ -92,7 +95,10 @@ public class VotoServiceTest {
 	@Test(expected=IllegalArgumentException.class)
 	public void deveSalvarVotoSemSessao() { 
 		Voto voto = new Voto();
-		voto.setFilme(new Filme("Filme 1"));
+		Filme filme = new Filme();
+		filme.setNome("Filme 1");
+		
+		voto.setFilme(filme);
 		this.service.salvar(voto);
 		fail("Deve gerar erro pois não foi informado a sessão do usuário");
 	}

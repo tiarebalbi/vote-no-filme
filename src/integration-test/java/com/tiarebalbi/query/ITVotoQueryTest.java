@@ -48,9 +48,12 @@ public class ITVotoQueryTest {
 	@Before
 	public void init() {
 		
-		Filme filme1 = new Filme("Filme 1");
-		Filme filme2 = new Filme("Filme 2");
-		Filme filme3 = new Filme("Filme 3");
+		Filme filme1 = new Filme();
+		filme1.setNome("Filme 1");
+		Filme filme2 = new Filme();
+		filme2.setNome("Filme 2");
+		Filme filme3 = new Filme();
+		filme3.setNome("Filme 3");
 		
 		filme1 = this.repositoryFilme.save(filme1);
 		filme2 = this.repositoryFilme.save(filme2);

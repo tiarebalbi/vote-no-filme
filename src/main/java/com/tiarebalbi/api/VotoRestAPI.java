@@ -5,15 +5,17 @@ import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.tiarebalbi.entity.Filme;
 import com.tiarebalbi.entity.Usuario;
 import com.tiarebalbi.entity.Voto;
+import com.tiarebalbi.service.FilmeService;
 import com.tiarebalbi.service.RankingService;
 import com.tiarebalbi.service.UsuarioService;
 import com.tiarebalbi.service.VotoService;
@@ -22,7 +24,7 @@ import com.tiarebalbi.service.VotoService;
  * @author Tiarê Balbi Bonamini
  */
 @RestController
-@RequestMapping(value="/api/voto",produces="application/json")
+@RequestMapping(value="/api/voto/**",produces="application/json", consumes="application/json")
 public class VotoRestAPI {
 	
 	@Autowired
@@ -34,18 +36,21 @@ public class VotoRestAPI {
 	@Autowired
 	private UsuarioService usuarioService;
 	
+	@Autowired
+	private FilmeService filmeService;
+	
 	/**
 	 * Método responsável em salvar um novo
 	 * @param voto 
 	 * @param bind 
 	 * @param request 
 	 * 
-	 * URL: [POST, PUT] -> /api/voto/salvar 
+	 * URL: [POST] -> /api/voto/salvar 
 	 * 
 	 * @return {@link ModelAndView}
 	 */
-	@RequestMapping(value="/salvar", method={RequestMethod.POST,RequestMethod.PUT})
-	public ModelAndView salvarVoto(@ModelAttribute("voto") @Valid Voto voto, BindingResult bind, HttpServletRequest request) {
+	@RequestMapping(method=RequestMethod.POST)
+	public ModelAndView salvarVoto(@RequestBody @Valid Voto voto, BindingResult bind, HttpServletRequest request) {
 		ModelAndView view = new ModelAndView();
 		
 		if(bind.hasErrors()) {
@@ -55,6 +60,11 @@ public class VotoRestAPI {
 		}
 
 		try {
+			if(voto.getFilme() != null && voto.getFilme().getId() != null) {
+				Filme filme = this.filmeService.buscarRegistro(voto.getFilme().getId());
+				voto.setFilme(filme);
+			}
+			
 			// Define a ID da sessão para o voto
 			voto.setSession(request.getSession().getId());
 			
@@ -73,11 +83,11 @@ public class VotoRestAPI {
 	/**
 	 * Método de Acesso ao Rank geral de todos os filmes do sistema
 	 * 
-	 * URL: [GET] -> /api/voto/ranking/geral
+	 * URL: [GET] -> /api/voto/ranking
 	 * 
 	 * @return {@link ModelAndView}
 	 */
-	@RequestMapping(value="/ranking/geral", method=RequestMethod.GET)
+	@RequestMapping(value="/ranking", method=RequestMethod.GET)
 	public ModelAndView rankingGeral() {
 		ModelAndView view = new ModelAndView();
 		view.addObject("data", this.ranking.buscarRankGeral());
@@ -93,7 +103,7 @@ public class VotoRestAPI {
 	 *  
 	 * @return {@link ModelAndView}
 	 */
-	@RequestMapping(value="/ranking/usuario/{idUsuario}", method=RequestMethod.GET)
+	@RequestMapping(value="/ranking/{idUsuario}", method=RequestMethod.GET)
 	public ModelAndView rankingUsuario(@PathVariable("idUsuario") Long idUsuario) {
 		ModelAndView view = new ModelAndView();
 		
