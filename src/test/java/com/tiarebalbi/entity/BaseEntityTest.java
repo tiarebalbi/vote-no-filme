@@ -18,10 +18,13 @@ public class BaseEntityTest {
 	@Test
 	public void deveTestarMetodoEquals() {
 		
-		Filme filme = new Filme("Nome");
+		Filme filme = new Filme();
+		filme.setNome("Nome");
 		filme.setId(new Long(PRIMEIRO));
 		
-		Filme filme2 = new Filme("N3ome");
+		Filme filme2 = new Filme();
+		filme2.setNome("No3me");
+		
 		filme2.setId(new Long(PRIMEIRO));
 		
 		assertTrue("Os objetos devem ser iguais, pois utilizam a mesma ID", filme.equals(filme2));
@@ -33,10 +36,12 @@ public class BaseEntityTest {
 	 */
 	@Test
 	public void deveTestarMetodoEqualsComValoresDiferentes() {
-		Filme filme = new Filme("Nome");
+		Filme filme = new Filme();
+		filme.setNome("Nome");
 		filme.setId(new Long(PRIMEIRO));
 		
-		Filme filme2 = new Filme("No3me");
+		Filme filme2 = new Filme();
+		filme2.setNome("No3me");
 		filme2.setId(new Long(SEGUNDO));
 		
 		assertFalse("Os objetos devem ser diferente, pois utilizam ID's diferentes", filme.equals(filme2));
@@ -48,10 +53,12 @@ public class BaseEntityTest {
 	@Test
 	public void deveTestarMetodoComObjetoSemIdENaoGerarErro() {
 		
-		Filme filme = new Filme("Nome");
+		Filme filme = new Filme();
+		filme.setNome("Nome");
 		filme.setId(new Long(PRIMEIRO));
 		
-		Filme filme2 = new Filme("Nom3e");
+		Filme filme2 = new Filme();
+		filme2.setNome("No3me");
 		
 		assertFalse("Os objetos devem ser diferente, a segunda instancia não possui ID", filme.equals(filme2));
 		

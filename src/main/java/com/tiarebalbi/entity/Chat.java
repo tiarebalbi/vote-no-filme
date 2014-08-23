@@ -65,4 +65,9 @@ public class Chat extends BaseEntity {
 		this.usuario = usuario;
 	}
 	
+	
+	@Override
+	public String toString() {
+		return String.format("[%s] Mensagem: %s", getHorario().getTime() ,getMensagem() );
+	}
 }

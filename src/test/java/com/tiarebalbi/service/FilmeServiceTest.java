@@ -51,7 +51,10 @@ public class FilmeServiceTest {
 	@Test(expected=IllegalArgumentException.class)
 	public void deveSalvarUmFilmeExistenteEGerarErro() {
 		when(this.repository.count(any(Predicate.class))).thenReturn(new Long(2));
-		this.service.salvar(new Filme("Teste"));
+		Filme filme = new Filme();
+		filme.setNome( "Filme 1");
+		
+		this.service.salvar(filme);
 		fail("Deveria ter gerado uma IllegalArgumentException pois este filme já se encontra cadastrado");
 	}
 	

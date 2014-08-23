@@ -5,7 +5,7 @@ import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -18,7 +18,7 @@ import com.tiarebalbi.service.UsuarioService;
  * @author Tiarê Balbi Bonamini
  */
 @RestController
-@RequestMapping(value="/api/usuario", produces="application/json")
+@RequestMapping(value="/api/usuario/**", produces="application/json", consumes="application/json")
 public class UsuarioRestAPI {
 	
 	@Autowired
@@ -30,8 +30,8 @@ public class UsuarioRestAPI {
 	 * @param request
 	 * @return {@link ModelAndView}
 	 */
-	@RequestMapping(value="/salvar", method=RequestMethod.POST)
-	public ModelAndView salvar(@ModelAttribute("usuario") @Valid Usuario usuario, BindingResult bind, HttpServletRequest request) {
+	@RequestMapping(method=RequestMethod.POST)
+	public ModelAndView salvar(@RequestBody @Valid Usuario usuario, BindingResult bind, HttpServletRequest request) {
 		ModelAndView view = new ModelAndView();
 		
 		if(bind.hasErrors()) {

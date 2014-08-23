@@ -15,6 +15,20 @@ public class Voto extends BaseEntity {
 	
 	@ManyToOne
 	private Filme filme;
+	
+	/**
+	 * 
+	 */
+	public Voto() {
+		super();
+	}
+	
+	/**
+	 * @param filme
+	 */
+	public Voto(Filme filme) {
+		this.filme = filme;
+	}
 
 	/**
 	 * @return the session

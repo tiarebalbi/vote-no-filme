@@ -23,7 +23,7 @@ import com.tiarebalbi.config.ApplicationContext;
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringApplicationConfiguration(classes = ApplicationContext.class)
 @WebAppConfiguration
-public class ITVotacaoControllerTest {
+public class ITAppControllerTest {
 
 	@Autowired
 	private WebApplicationContext webApplicationContext;
@@ -46,7 +46,7 @@ public class ITVotacaoControllerTest {
 	public void deveAcessarMetodoInicialParaVotacao() throws Exception {
 		this.mockMvc.perform(get("/"))
 			.andExpect(status().isOk())
-			.andExpect(view().name("votacao/index"));
+			.andExpect(view().name("app/index"));
 	}
 
 }

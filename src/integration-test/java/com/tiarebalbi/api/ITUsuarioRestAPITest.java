@@ -1,8 +1,6 @@
 package com.tiarebalbi.api;
 
-import static org.hamcrest.Matchers.hasSize;
 import static org.hamcrest.Matchers.is;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -24,12 +22,8 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
 
 import com.tiarebalbi.config.ApplicationContext;
-import com.tiarebalbi.entity.Chat;
 import com.tiarebalbi.entity.Usuario;
-import com.tiarebalbi.repository.ChatRepository;
 import com.tiarebalbi.repository.UsuarioRepository;
-import com.tiarebalbi.service.ChatService;
-import com.tiarebalbi.service.UsuarioService;
 
 /**
  * @author Tiarê Balbi Bonamini
@@ -37,21 +31,12 @@ import com.tiarebalbi.service.UsuarioService;
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringApplicationConfiguration(classes = ApplicationContext.class)
 @WebAppConfiguration
-public class ITChatRestAPITest {
+public class ITUsuarioRestAPITest {
 	
 	@Autowired
 	private WebApplicationContext webApplicationContext;
 	
 	private MockMvc mockMvc;
-	
-	@Autowired
-	private UsuarioService usuarioService;
-	
-	@Autowired
-	private ChatService chatService;
-	
-	@Autowired
-	private ChatRepository repository;
 	
 	@Autowired
 	private UsuarioRepository usuarioRepository;
@@ -69,52 +54,19 @@ public class ITChatRestAPITest {
 	 * 
 	 */
 	@Test
-	public void deveListarUltimasMensagens() throws Exception {
-		
-		Usuario usuario = new Usuario("Tiarê Balbi", "tiarebalbi@me.com");
-		usuario = this.usuarioService.salvar(usuario);
-		
-		Chat mensagem = new Chat();
-		mensagem.setMensagem("DAwdqwd");
-		mensagem.setUsuario(usuario);
-		
-		mensagem = this.chatService.salvar(mensagem);
-		
-		
-		this.mockMvc.perform(get("/api/chat").accept(MediaType.APPLICATION_JSON_VALUE).contentType(MediaType.APPLICATION_JSON))
-			.andExpect(status().isOk())
-			.andExpect(jsonPath("$.data", hasSize(1)))
-			.andExpect(jsonPath("$.data[0].mensagem", is("DAwdqwd")))
-			.andExpect(jsonPath("$.data[0].usuario.nome", is("Tiarê Balbi")));
-	}
-	
-	/**
-	 * @throws Exception 
-	 * 
-	 */
-	@Test
-	public void deveSalvarUmaMensagem() throws Exception {
-		
-		Usuario usuario = new Usuario("Tiarê Balbi", "tiarebalbi@me.com");
-		usuario = this.usuarioService.salvar(usuario);
-		
-		Chat mensagem = new Chat();
-		mensagem.setMensagem("Mensagem 1");
-		mensagem.setUsuario(usuario);
+	public void deveSalvarUmNovoUsuario() throws Exception {
 		
 		ObjectMapper mapper = new ObjectMapper();
-		String json = mapper.writeValueAsString(mensagem);
+		String json = mapper.writeValueAsString(new Usuario("Tiarê Balbi", "tiarebalbi@me.com"));
 		
-		this.mockMvc.perform(post("/api/chat")
+		this.mockMvc.perform(post("/api/usuario")
 							.accept(MediaType.APPLICATION_JSON_VALUE)
 							.content(json)
 							.contentType(MediaType.APPLICATION_JSON)
 					)
+					.andExpect(jsonPath("$.message", is("Usuário Registrado com Sucesso!!!")))
 					.andExpect(jsonPath("$.status", is("success")))
-					.andExpect(jsonPath("$.message", is("Mensagem enviada!")))
 					.andExpect(status().isOk());
-		
-		
 	}
 	
 	/**
@@ -122,11 +74,6 @@ public class ITChatRestAPITest {
 	 */
 	@After
 	public void limpeza() {
-		
-		List<Chat> dados = this.repository.findAll();
-		for(Chat chat : dados) {
-			this.repository.delete(chat);
-		}
 		
 		List<Usuario> usuarios = this.usuarioRepository.findAll();
 		this.usuarioRepository.delete(usuarios);

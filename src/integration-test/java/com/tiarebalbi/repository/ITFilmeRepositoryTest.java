@@ -35,7 +35,8 @@ public class ITFilmeRepositoryTest {
 	@Test
 	public void deveTestarSalvarUmNovoFilme() {
 		
-		Filme filme = new Filme("Need for Speed");
+		Filme filme = new Filme();
+		filme.setNome("Need for Speed");
 		Filme retorno = this.repository.save(filme);
 		assertNotNull("O Filme deve ser persistido na base de dados", retorno);
 		assertNotNull("A ID do registro não deve ser null", retorno.getId());
@@ -48,10 +49,14 @@ public class ITFilmeRepositoryTest {
 	 */
 	@Test
 	public void deveTestarRealizadaConsultaDeRegistros() {
-		Filme filme = new Filme("Need for Speed 1");
-		Filme filme2 = new Filme("Need for Speed 2");
-		Filme filme3 = new Filme("Need for Speed 3");
-		Filme filme4 = new Filme("Need for Speed 4");
+		Filme filme = new Filme();
+		filme.setNome("Need for Speed 1");
+		Filme filme2 = new Filme();
+		filme2.setNome("Need for Speed 2");
+		Filme filme3 = new Filme();
+		filme3.setNome("Need for Speed 3");
+		Filme filme4 = new Filme();
+		filme4.setNome("Need for Speed 4");
 		
 		Filme retorno = this.repository.save(filme);
 		this.repository.save(filme2);
@@ -69,7 +74,9 @@ public class ITFilmeRepositoryTest {
 	 */
 	@Test
 	public void deveBuscarUmRegistro() {
-		Filme filme = new Filme("Need for Speed 4");
+		Filme filme = new Filme();
+		filme.setNome("Need for Speed 4");
+		
 		Filme retorno = this.repository.save(filme);
 		
 		Filme retornoConsulta = this.repository.findOne(retorno.getId());
@@ -82,7 +89,8 @@ public class ITFilmeRepositoryTest {
 	 */
 	@Test
 	public void deveBuscarUmRegistroPorCondicao() {
-		Filme filme = new Filme("Need for Speed 4");
+		Filme filme = new Filme();
+		filme.setNome("Need for Speed 4");
 		this.repository.save(filme);
 		
 		Filme retorno = this.repository.findOne(QFilme.filme.nome.eq("Need for Speed 4"));
@@ -96,7 +104,8 @@ public class ITFilmeRepositoryTest {
 	 */
 	@Test
 	public void deveExcluirUmRegistroPorId() {
-		Filme filme = new Filme("Need for Speed 4");
+		Filme filme = new Filme();
+		filme.setNome("Need for Speed 4");
 		Filme retorno = this.repository.save(filme);
 		
 		assertTrue("O total de registro deve ser igual a 1", this.repository.count() == 1);
