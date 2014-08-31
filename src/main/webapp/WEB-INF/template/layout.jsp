@@ -11,11 +11,30 @@
 	<tiles:importAttribute name="page" />
 	<title>${page} - ${title}</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-	
+	<link type="text/css" rel="stylesheet" media="screen" href="${path}resources/css/app.css" />
 </head>
-<body>
-	<tiles:insertAttribute name="conteudo" />
-	<div>Running version app: <span app-version></span></div>
+<body class="container-flex">
+	<header>
+		<section class=title>Votação</section>
+		<section class="message">
+			Selecione entre os dois filmes qual você prefere!!!
+		</section>
+	</header>
+	<div id="main">
+		<aside id="bar-nav">
+			<nav>
+				<h1>Menu</h1>
+				<a href="#home" class="active"><i class="fa fa-rocket mrm"></i> Filmes</a>
+				<a href="#ranking"><i class="fa fa-line-chart mrm"></i> Ranking</a>
+				<a href="#sobre"><i class="fa fa-info mrm"></i> Sobre o Projeto</a>
+			</nav>
+		</aside>
+		<section id="content">
+			<tiles:insertAttribute name="conteudo" />
+		</section>
+	</div>
+	<footer>
+	</footer>
 	<script data-main="${path}resources/js/require.config" src="${path}resources/vendor/requirejs/require.js"></script>
 </body>
 </html>

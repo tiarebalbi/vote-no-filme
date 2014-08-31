@@ -1,0 +1,127 @@
+.container-flex {
+	.flex-display(flex);
+	min-height: 100vh;
+	flex-direction: column;
+	font-family: 'Lato', sans-serif;
+	
+	header {
+		.flex-display(flex);
+		.bg-variant(@destaque);
+		min-height: 9vh;
+		flex-direction: row;
+		
+		section.title {
+			.flex(2);
+			.bg-variant(@pomegranate);
+			.flex-display(flex);
+			align-items: center;
+			justify-content: center;
+			
+			color: #ffffff;
+			font-size: 27px;
+		}
+		
+		section.message {
+			.flex(10);
+			.flex-display(flex);
+			align-items: center;
+			justify-content: center;
+			color: #ffffff;
+			font-size: 17px;
+		}
+	}
+	
+	
+	#main {
+		.flex-display(flex);
+		min-height: 91vh;
+		flex-direction: row;
+		font-family: 'Lato', sans-serif;
+		
+		aside#bar-nav {
+			.bg-variant(@bg-destaque);
+			.flex(2);
+			width: 200px;
+			
+			nav {
+				padding: 20px;
+				h1 {
+					font-size: 14px;
+					color: #555555;
+				}
+				
+				a {
+					display: block;
+					margin-bottom: 20px;
+					cursor: pointer;
+					height: 40px;
+					width: 100%;
+					color: #fff;
+					padding: 10px;
+					font-size: 16px;
+					
+					
+					&:hover, &.active {
+						background: #1B242B;
+						border-radius : 5px;
+						text-decoration: none;
+					}
+				}
+			}
+		}
+		
+		section#content {
+			.flex(10);
+			.flex-display(flex);
+			align-items: center;
+			justify-content: center;
+			
+			h1 {
+				webkit-align-self: flex-start;
+				-ms-flex-item-align: start;
+				align-self: flex-start;
+				font-size: 20px;
+			}
+			
+			.filme {
+				flex-direction: column;
+			
+				height: 650px;
+				width: 300px;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				margin: 20px;
+				
+				.imagem {
+					.bg-variant(@wet-asphalt);
+					height: 500px;
+					width: 300px;
+					margin-top: 30px;
+				}
+				
+				h1 {
+					margin-bottom: 10px;
+					font-size: 17px;
+					font-weight: bold;
+					width: 300px;
+				}
+				
+				p {
+					font-size: 12px;
+					font-weight: normal;
+					color: @gray-light;
+					margin: 0px;
+					padding: 0px;
+					margin-bottom: 5px;
+				}
+				
+				
+			}
+		}
+	}
+}
+
+
+
+
