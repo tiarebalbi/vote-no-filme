@@ -27,7 +27,7 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>1.1.5.RELEASE</version>
+		<version>1.1.6.RELEASE</version>
 		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
 
@@ -38,7 +38,7 @@
 		<skip.unit.tests>false</skip.unit.tests>
 
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<start-class>com.tiarebalbi.Application</start-class>
+		<start-class>com.tiarebalbi.config.ApplicationContext</start-class>
 		<java.version>1.7</java.version>
 
 		<jsp.version>2.2</jsp.version>
@@ -121,8 +121,8 @@
 			<artifactId>spring-aspects</artifactId>
 		</dependency>
 		<dependency>
-		<groupId>org.apache.derby</groupId>
-		<artifactId>derby</artifactId>
+            <groupId>org.apache.derby</groupId>
+            <artifactId>derby</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>hsqldb</groupId>
@@ -154,6 +154,10 @@
 			<artifactId>spymemcached</artifactId>
 			<version>2.11.2</version>
 		</dependency>
+        <dependency>
+            <groupId>org.flywaydb</groupId>
+            <artifactId>flyway-core</artifactId>
+        </dependency>
 
 		<dependency>
 			<groupId>org.hamcrest</groupId>
@@ -336,9 +340,6 @@
 				<artifactId>coveralls-maven-plugin</artifactId>
 				<version>2.2.0</version>
 				<configuration>
-					<excludes>
-						<exclude>**/Q*.java</exclude>
-					</excludes>
 					<repoToken>PrSAWNQhXEWMqZSeBSfYxD7j5cHbBr5tD</repoToken>
 				</configuration>
 			</plugin>

@@ -42,6 +42,11 @@
 			.bg-variant(@bg-destaque);
 			.flex(2);
 			width: 200px;
+
+            .usuarios {
+              color: #fff;
+              margin-left: 20px;
+            }
 			
 			nav {
 				padding: 20px;
@@ -75,38 +80,43 @@
 			.flex-display(flex);
 			align-items: center;
 			justify-content: center;
-			
+
+            .resume {
+                align-items: center;
+                justify-content: center;
+            }
+
 			h1 {
 				webkit-align-self: flex-start;
 				-ms-flex-item-align: start;
 				align-self: flex-start;
 				font-size: 20px;
 			}
-			
+
 			.filme {
 				flex-direction: column;
-			
+
 				height: 650px;
 				width: 300px;
 				display: flex;
 				align-items: center;
 				justify-content: center;
 				margin: 20px;
-				
+
 				.imagem {
 					.bg-variant(@wet-asphalt);
 					height: 500px;
 					width: 300px;
 					margin-top: 30px;
 				}
-				
+
 				h1 {
 					margin-bottom: 10px;
 					font-size: 17px;
 					font-weight: bold;
 					width: 300px;
 				}
-				
+
 				p {
 					font-size: 12px;
 					font-weight: normal;
@@ -115,8 +125,7 @@
 					padding: 0px;
 					margin-bottom: 5px;
 				}
-				
-				
+
 			}
 		}
 	}

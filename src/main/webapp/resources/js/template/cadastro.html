@@ -1,0 +1,21 @@
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12">
+            <h1>Formulário para Cadastro das suas Informações:</h1>
+            <p>Preencha os campos abaixo com os seus dados para que possamos computar o seus votos.</p>
+            <form class="form" name="form">
+                <div class="form-group">
+                    <label>Seu Nome: </label>
+                    <input name="nome" ng-model="usuario.nome" class="form-control" ng-required="true" />
+                </div>
+                <div class="form-group">
+                    <label>E-Mail: </label>
+                    <input name="email" type="email" ng-model="usuario.email" class="form-control" ng-required="true" />
+                </div>
+
+                <button type="submit" class="btn btn-info" ng-click="salvar(form)"><i class="fa fa-floppy-o"></i> Salvar</button>
+            </form>
+        </div>
+    </div>
+</div>
+

@@ -44,4 +44,6 @@ public interface VotoService {
 	 */
 	Voto buscarRegistro(Long id);
 
+    long count(Predicate condicao);
+
 }

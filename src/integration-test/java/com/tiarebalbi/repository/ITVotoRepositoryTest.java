@@ -27,7 +27,6 @@ public class ITVotoRepositoryTest {
 	@Autowired
 	private VotoRepository repository;
 	
-	
 	/**
 	 * 
 	 */
@@ -62,6 +61,44 @@ public class ITVotoRepositoryTest {
 		assertTrue("O total de registro deve ser igual a 2", 2 == retorno.size());
 		
 	}
+
+    /**
+     *
+     */
+    @Test
+    public void deveVerificarTotalDeRegistrosSalvo() {
+
+        Voto voto = new Voto();
+        voto.setSession("S1");
+        this.repository.save(voto);
+
+        Voto voto2 = new Voto();
+        voto2.setSession("S2");
+        this.repository.save(voto2);
+
+        long retorno = this.repository.count();
+        assertTrue("O total de registro deve ser igual a 2", 2 == retorno);
+
+    }
+
+    /**
+     *
+     */
+    @Test
+    public void deveVerificarTotalDeRegistrosSalvoComCondicao() {
+
+        Voto voto = new Voto();
+        voto.setSession("S1");
+        this.repository.save(voto);
+
+        Voto voto2 = new Voto();
+        voto2.setSession("S2");
+        this.repository.save(voto2);
+
+        long retorno = this.repository.count(QVoto.voto.session.eq("S2"));
+        assertTrue("O total de registro deve ser igual a 1", 1 == retorno);
+
+    }
 	
 	/**
 	 * 

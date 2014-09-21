@@ -2,6 +2,7 @@ package com.tiarebalbi.api;
 
 import static org.hamcrest.Matchers.is;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -65,8 +66,7 @@ public class ITVotoRestAPITest {
 		filme = this.service.salvar(filme);
 		
 		String json = "{\"filme\" : { \"id\" : "+filme.getId()+"}}";
-		System.out.println(json);
-		
+
 		this.mockMvc.perform(post("/api/voto")
 							.accept(MediaType.APPLICATION_JSON_VALUE)
 							.content(json)
@@ -77,6 +77,16 @@ public class ITVotoRestAPITest {
 					.andExpect(status().isOk());
 		
 	}
+
+    @Test
+    public void deveBuscarTotalDeVotos() throws Exception {
+
+        this.mockMvc.perform(get("/api/voto/total")
+                        .accept(MediaType.APPLICATION_JSON_VALUE)
+                        .contentType(MediaType.APPLICATION_JSON))
+                        .andExpect(jsonPath("$.total", is(0)))
+                        .andExpect(status().isOk());
+    }
 	
 	/**
 	 * 

@@ -51,13 +51,16 @@ public class ITFilmeRepositoryTest {
 	public void deveTestarRealizadaConsultaDeRegistros() {
 		Filme filme = new Filme();
 		filme.setNome("Need for Speed 1");
+
 		Filme filme2 = new Filme();
 		filme2.setNome("Need for Speed 2");
+
 		Filme filme3 = new Filme();
 		filme3.setNome("Need for Speed 3");
+
 		Filme filme4 = new Filme();
 		filme4.setNome("Need for Speed 4");
-		
+
 		Filme retorno = this.repository.save(filme);
 		this.repository.save(filme2);
 		this.repository.save(filme3);

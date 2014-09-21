@@ -37,7 +37,7 @@ public class WebContext extends WebMvcConfigurerAdapter {
 	public void addResourceHandlers(ResourceHandlerRegistry registry) {
 		registry.addResourceHandler("/resources/**").addResourceLocations("/resources/");
 	}
-	
+
 	/**
 	 * @return {@link MessageSource}
 	 */

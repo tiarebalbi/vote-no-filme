@@ -45,6 +45,7 @@ public class DataContext {
     public DataSource dataSource() {
         return new EmbeddedDatabaseBuilder()
             .setType(EmbeddedDatabaseType.DERBY)
+            .setName("votacao")
             .build();
     }
 	
