@@ -8,6 +8,11 @@ vote-no-filme
 
 Projeto demonstração do vote-no-filme.
 
+Execução da aplicação: 
+
+Para executar você pode usar os seguintes comandos: 
+	mvn spring-boot:run
+
 Executando os testes:
 
 Você pode executar os testes de unidade utilizando o comando abaixo:
