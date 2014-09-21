@@ -11,7 +11,14 @@ Projeto demonstração do vote-no-filme.
 Execução da aplicação: 
 
 Para executar você pode usar os seguintes comandos: 
+
 	mvn spring-boot:run
+	
+Ou caso você queira:
+
+	mvn package
+	
+ - Feito o procedimento acima, você pode pegar o arquivo .war dentro da pasta target e publicar no seu container.
 
 Executando os testes:
 
