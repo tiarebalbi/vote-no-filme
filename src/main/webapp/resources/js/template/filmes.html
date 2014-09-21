@@ -1,0 +1,16 @@
+
+<div ng-show="mensagem">
+       <h3>Notificação</h3>
+       <p>{{mensagem}}</p>
+       <a ng-href="#/refresh" class="btn btn-danger"><i class="fa fa-refresh"></i> Recarregar</a>
+</div>
+
+<article class="filme" ng-repeat="filme in filmes">
+    <a class="btn btn-lg btn-block btn-danger" ng-href="#/voto/{{filme.id}}">Votar</a>
+    <a class="btn btn-lg btn-block btn-info" ng-href="#/ranking"  ng-show="total > 5"> <i class="fa fa-tasks"></i> Visualizar Ranking</a>
+    <div class="imagem" style="background-image: url('{{filme.capa}}'); background-size: 300px; "></div>
+    <div class="info">
+        <h1>{{filme.nome}}</h1>
+        <p>{{filme.descricao}}</p>
+    </div>
+</article>

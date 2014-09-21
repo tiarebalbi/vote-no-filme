@@ -1,0 +1,53 @@
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12">
+            <h3>Lista com os Filmes Mais Votados</h3>
+            <p>Seja Bem Vindo, <strong>{{usuario.nome}}</strong>, aqui você poderá ver o ranking geral e o seu ranking.</p>
+            <a ng-href="#/"><i class="fa fa-arrow-circle-left"></i> Clique aqui para continuar votando...</a>
+        </div>
+        <hr class="col-lg-12" />
+        <div class="col-lg-6">
+            <h4>Ranking Geral</h4>
+            <table class="table table-bordered table-hover">
+                <thead>
+                    <tr>
+                        <th>Total de Votos</th>
+                        <th>Filme</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="voto in votosGerais">
+                        <td>{{voto.totalVotos}}</td>
+                        <td>{{voto.filme}}</td>
+                    </tr>
+                    <tr ng-show="votosGerais.length == 0">
+                        <td colspan="2">Ninguém ainda votou... :(</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="col-lg-6">
+            <h4>Seu Ranking</h4>
+            <table class="table table-bordered table-hover">
+                <thead>
+                <tr>
+                    <th>Total de Votos</th>
+                    <th>Filme</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr ng-repeat="voto in votosUsuario">
+                    <td>{{voto.totalVotos}}</td>
+                    <td>{{voto.filme}}</td>
+                </tr>
+                <tr ng-show="votosUsuario.length == 0">
+                    <td colspan="2">Ops... Você ainda não votou em nenhum filme.</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+

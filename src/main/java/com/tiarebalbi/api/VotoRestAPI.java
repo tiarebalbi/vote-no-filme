@@ -3,6 +3,8 @@ package com.tiarebalbi.api;
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
+import com.mysema.query.types.expr.BooleanExpression;
+import com.tiarebalbi.entity.QVoto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -64,7 +66,7 @@ public class VotoRestAPI {
 				Filme filme = this.filmeService.buscarRegistro(voto.getFilme().getId());
 				voto.setFilme(filme);
 			}
-			
+
 			// Define a ID da sessão para o voto
 			voto.setSession(request.getSession().getId());
 			
@@ -93,6 +95,26 @@ public class VotoRestAPI {
 		view.addObject("data", this.ranking.buscarRankGeral());
 		return view;
 	}
+
+    /**
+     * Método de consulta do total de votos realizados pelo o usuário
+     *
+     * URL: [GET] -> /api/voto/total
+     *
+     * @return {@link ModelAndView}
+     */
+    @RequestMapping(value="/total", method=RequestMethod.GET)
+    public ModelAndView totalVotos(HttpServletRequest request) {
+        ModelAndView view = new ModelAndView();
+
+        String sessionId = request.getSession().getId();
+        BooleanExpression condicao = QVoto.voto.session.eq(sessionId);
+        long total = this.service.count(condicao);
+
+        view.addObject("total", total);
+
+        return view;
+    }
 
 	/**
 	 * Método de Acesso ao Rank geral de todos os filmes do sistema

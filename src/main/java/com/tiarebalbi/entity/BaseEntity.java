@@ -15,7 +15,7 @@ import javax.persistence.Version;
 public abstract class BaseEntity {
 	
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	protected Long id;
 	
 	@Version

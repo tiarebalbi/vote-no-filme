@@ -30,6 +30,12 @@
     "angular": "latest",
     "angular-route": "latest",
     "requirejs": "latest",
-    "requirejs-domready": "latest"
+    "json3": "latest",
+    "es5-shim": "latest",
+    "angular-resource": "latest",
+    "angular-cookies": "latest",
+    "angular-sanitize": "latest",
+    "angular-animate": "latest",
+    "angular-touch": "latest"
   }
 }

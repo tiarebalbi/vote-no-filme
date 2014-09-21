@@ -11,51 +11,50 @@ import javax.persistence.ManyToOne;
 @Entity
 public class Voto extends BaseEntity {
 
-	private String session;
-	
-	@ManyToOne
-	private Filme filme;
-	
-	/**
-	 * 
-	 */
-	public Voto() {
-		super();
-	}
-	
-	/**
-	 * @param filme
-	 */
-	public Voto(Filme filme) {
-		this.filme = filme;
-	}
+    private String session;
 
-	/**
-	 * @return the session
-	 */
-	public String getSession() {
-		return session;
-	}
+    @ManyToOne
+    private Filme filme;
 
-	/**
-	 * @param session the session to set
-	 */
-	public void setSession(String session) {
-		this.session = session;
-	}
+    /**
+     *
+     */
+    public Voto() {
+        super();
+    }
 
-	/**
-	 * @return the filme
-	 */
-	public Filme getFilme() {
-		return filme;
-	}
+    /**
+     * @param filme
+     */
+    public Voto(Filme filme) {
+        this.filme = filme;
+    }
 
-	/**
-	 * @param filme the filme to set
-	 */
-	public void setFilme(Filme filme) {
-		this.filme = filme;
-	}
+    /**
+     * @return the session
+     */
+    public String getSession() {
+        return session;
+    }
 
+    /**
+     * @param session the session to set
+     */
+    public void setSession(String session) {
+        this.session = session;
+    }
+
+    /**
+     * @return the filme
+     */
+    public Filme getFilme() {
+        return filme;
+    }
+
+    /**
+     * @param filme the filme to set
+     */
+    public void setFilme(Filme filme) {
+        this.filme = filme;
+    }
 }

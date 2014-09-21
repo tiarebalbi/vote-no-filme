@@ -73,4 +73,10 @@ public class CustomVotoService implements VotoService {
 		return this.repository.findOne(id);
 	}
 
+    @Override
+    public long count(Predicate condicao) {
+        Assert.notNull(condicao, "Não foi possível identificar a condição de busca.");
+        return this.repository.count(condicao);
+    }
+
 }
