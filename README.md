@@ -5,6 +5,7 @@ vote-no-filme
 [![Coverage Status](https://img.shields.io/coveralls/tiarebalbi/vote-no-filme.svg)](https://coveralls.io/r/tiarebalbi/vote-no-filme)
 [ ![Codeship Status for tiarebalbi/vote-no-filme](https://codeship.io/projects/a1678840-2494-0132-1117-12e55c6fdf6c/status)](https://codeship.io/projects/36919)
 
+--
 
 Projeto demonstração do vote-no-filme.
 
