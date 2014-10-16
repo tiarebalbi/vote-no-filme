@@ -75,8 +75,8 @@ define(['angular', 'pubnub'], function (angular, PUBNUB) {
             refreshRankingGeral();
 
             var pubnub = PUBNUB.init({
-                publish_key: 'pub-c-a3d09656-7d8e-4a75-8568-56be4934dd22',
-                subscribe_key: 'sub-c-c1379f54-41cd-11e4-aed8-02ee2ddab7fe'
+                publish_key: 'pub-c-b47c13fa-4851-4345-bef8-83fc9b6b4038',
+                subscribe_key: 'sub-c-b9ca96fa-5338-11e4-a551-02ee2ddab7fe'
             });
 
             pubnub.subscribe({

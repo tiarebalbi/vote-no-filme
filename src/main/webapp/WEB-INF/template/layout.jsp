@@ -1,7 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java"%>
-<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles"%>
-<spring:url value="/" var="path"></spring:url>
 <!DOCTYPE html>
 <html class="no-js" ng-app>
 <head>
@@ -11,7 +9,7 @@
 	<tiles:importAttribute name="page" />
 	<title>${page} - ${title}</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-	<link type="text/css" rel="stylesheet" media="screen" href="${path}resources/css/app.css" />
+	<link type="text/css" rel="stylesheet" media="screen" href="/vote-no-filme/resources/css/app.css" />
 </head>
 <body class="container-flex" ng-app="votacao">
 	<header>
@@ -39,6 +37,6 @@
 	</div>
 	<footer>
 	</footer>
-    <script data-main="${path}resources/js/require.config" src="${path}resources/vendor/requirejs/require.js"></script>
+    <script data-main="/vote-no-filme/resources/js/require.config" src="/vote-no-filme/resources/vendor/requirejs/require.js"></script>
 </body>
 </html>

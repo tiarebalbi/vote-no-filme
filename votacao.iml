@@ -7,24 +7,9 @@
           <root url="file://$MODULE_DIR$/src/main/webapp" relative="/" />
         </webroots>
         <sourceRoots>
-          <root url="file://$MODULE_DIR$/target/generated-sources/java" />
-          <root url="file://$MODULE_DIR$/target/generated-sources/resources" />
           <root url="file://$MODULE_DIR$/src/main/java" />
           <root url="file://$MODULE_DIR$/src/main/resources" />
         </sourceRoots>
-      </configuration>
-    </facet>
-    <facet type="JRebel" name="JRebel">
-      <configuration>
-        <option name="autosync" value="false" />
-        <option name="deleteUnindexed" value="true" />
-        <option name="manualXML" value="false" />
-        <option name="masterModuleName" />
-        <option name="remotingEnabled" value="false" />
-        <option name="scanAllFiles" value="false" />
-        <option name="secure" value="true" />
-        <option name="url" />
-        <option name="xmlDir" />
       </configuration>
     </facet>
   </component>
@@ -32,22 +17,19 @@
     <output url="file://$MODULE_DIR$/target/classes" />
     <output-test url="file://$MODULE_DIR$/target/test-classes" />
     <content url="file://$MODULE_DIR$">
-      <sourceFolder url="file://$MODULE_DIR$/target/generated-sources/java" isTestSource="false" generated="true" />
-      <sourceFolder url="file://$MODULE_DIR$/target/generated-sources/resources" isTestSource="false" generated="true" />
       <sourceFolder url="file://$MODULE_DIR$/src/main/java" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/test/java" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/src/integration-test/java" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/src/main/resources" type="java-resource" />
       <sourceFolder url="file://$MODULE_DIR$/src/test/resources" type="java-test-resource" />
+      <sourceFolder url="file://$MODULE_DIR$/target/generated-sources/java" isTestSource="false" generated="true" />
       <excludeFolder url="file://$MODULE_DIR$/target/classes" />
-      <excludeFolder url="file://$MODULE_DIR$/target/failsafe-reports" />
-      <excludeFolder url="file://$MODULE_DIR$/target/maven-archiver" />
       <excludeFolder url="file://$MODULE_DIR$/target/maven-status" />
       <excludeFolder url="file://$MODULE_DIR$/target/test-classes" />
-      <excludeFolder url="file://$MODULE_DIR$/target/vote-no-filme" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" name="sass-stdlib" level="application" />
     <orderEntry type="library" name="Maven: org.springframework.data:spring-data-jpa:1.6.1.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.data:spring-data-commons:1.8.1.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: org.springframework:spring-core:4.0.7.RELEASE" level="project" />
