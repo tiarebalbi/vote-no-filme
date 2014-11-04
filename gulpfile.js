@@ -7,18 +7,6 @@ var gulp = require('gulp'),
     rename = require('gulp-rename'),
     notify = require('gulp-notify');
 
-// Desativado devido ao uso do require.js
-
-//gulp.task('scripts', function() {
-//    return gulp.src('bower_components/**/*.js')
-//        .pipe(concat('main.js'))
-//        .pipe(gulp.dest('src/main/webapp/resources/vendor/dist'))
-//        .pipe(rename({ suffix: '.min' }))
-//        .pipe(uglify())
-//        .pipe(gulp.dest('src/main/webapp/resources/vendor/dist'))
-//        .pipe(notify({ message: 'Tarefa de script finalizada com sucesso.' }));
-//});
-
 gulp.task('move', function() {
     bowerSrc().pipe(gulp.dest('src/main/webapp/resources/vendor'));
 });
