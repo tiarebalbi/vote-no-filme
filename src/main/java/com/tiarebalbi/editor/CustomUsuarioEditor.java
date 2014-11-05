@@ -13,8 +13,7 @@ public class CustomUsuarioEditor extends PropertyEditorSupport {
 	
 	@Override
 	public void setValue(Object value) {
-		System.out.println("Passou aqui");
-		
+		// TODO Implementar editor.
 	}
 
 }
