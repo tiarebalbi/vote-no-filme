@@ -61,7 +61,7 @@ public class ChatRestAPI {
 	 * @throws JsonParseException 
 	 */
 	@RequestMapping(method=RequestMethod.POST)
-	public ModelAndView salvar(@RequestBody @Valid Chat chat, BindingResult bind, HttpServletRequest request) throws JsonParseException, JsonMappingException, IOException {
+	public ModelAndView salvar(@RequestBody @Valid Chat chat, BindingResult bind, HttpServletRequest request) {
 		ModelAndView view = new ModelAndView();
 		
 		if(bind.hasErrors()) {
@@ -83,7 +83,7 @@ public class ChatRestAPI {
 			view.addObject("message", "Mensagem enviada!");
 			view.addObject("status", "success");
 			
-		} catch(RuntimeException e) {
+		} catch(Exception e) {
 			view.addObject("message", e.getMessage());
 			view.addObject("status", "error");
 		}		
